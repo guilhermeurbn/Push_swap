@@ -5,79 +5,87 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 16:21:09 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/20 13:36:51 by guisanto         ###   ########.fr       */
+/*   Created: 2025/01/22 13:36:31 by guisanto          #+#    #+#             */
+/*   Updated: 2025/01/27 15:33:46 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// corpo do sistema
-void push_swap(int *stack, int n)
+//algoritmo para organizar a Stack conforme com os bites
+void	radix_sort(t_node **stack_a, t_node **stack_b)
 {
-    int max;
-    int exp;
-    
-    max = 0;
-    exp = 1;
-    max = ft_max(stack, n);
-    
-    while(max / exp > 0)
+    int i;
+    int j;
+    int size;
+
+    i = 0;
+    size = ft_stack_size(*stack_a);
+    while(!stack_is_sorted(stack_a))
     {
-        count_sort(stack, n, exp);
-        exp *= 10;
+        j = 0;
+        while(j++ < size)
+        {
+            if ((((*stack_a)->index >> i) & 1) == 1)
+                ra(stack_a);
+            else
+                pb(stack_b, stack_a);
+        }
+        while(ft_stack_size(*stack_b) != 0)
+            pa(stack_a, stack_b);
+        i++;
     }
-    if (check_duplicates(stack, n) == 0)
-    {
-        printf("error!\nNúmeros duplicados!\n");
-        return(free(stack));
-    }
-    print_stack(stack, n);
 }
-
-//cerebro central
-int main(int ac, char **av)
+//organizando conforme o tamanho da stack
+void	simple_sort(t_node **stack_a, t_node **stack_b)
 {
-    int     *stack;
-    char    **str;
-    int     n = ac - 1;
-    int     i = 0;
+    int size;
+    if (stack_is_sorted(stack_a) || ft_stack_size(*stack_a) == 1 || ft_stack_size(*stack_a) == 0)
+        return ;
+    size = ft_stack_size(*stack_a);
+    if (size == 2)
+        sa(stack_a);
+    else if (size == 3)
+        sort_three(stack_a);
+    else if (size == 4)
+        sort_four(stack_a, stack_a);
+    else if (size == 5)
+        sort_five(stack_a, stack_b);
+}
+//pegando o 2 menor
+static t_node	*get_next_min(t_node **stack)
+{
+    t_node *top;
+    t_node *min;
+    int tmp_min;
     
-    if (ac < 2)
+    min = NULL;
+    tmp_min = 0;
+    top = *stack;
+    if (top)
     {
-        printf("error1!\n");
-        return (1);
-    }
-    if (ac == 2 && av[1][0])
-    {
-        stack = malloc(ft_strlen((av[1]) + 1) * sizeof(int));
-        str = ft_split(av[1], 32);
-        
-        if (!stack)
-            return (free(stack), 1);
-        if (!str)
-            return (free(str), 1);
-        
-        while(str[i])
+        while(top)
         {
-            stack[i] = ft_atoi(str[i]);
-            i++;
+            if ((top -> index == -1) && (!tmp_min || top->number < min->number))
+            {
+                min = top;
+                tmp_min = 1;
+            }
+            top = top ->next;
         }
-        free(str);
-        push_swap(stack, i);
-        return (0);
     }
-    else
+    return (min);
+}
+//organizando os index de cada numero
+void	index_stack(t_node **stack)
+{
+    t_node *top;
+    int     index;
+
+    index = 0;
+    top = get_next_min(stack);
+    while (top)
     {
-        stack = malloc((n + 1) * sizeof(int));
-        if (!stack)
-            return (free(stack), 1);
-        while(i < n)
-        {
-            stack[i] = ft_atoi(av[i + 1]);
-            i++;
-        }
-        push_swap(stack, n);
+        top -> index = index++;
+        top = get_next_min(stack);
     }
-    return (0);
 }

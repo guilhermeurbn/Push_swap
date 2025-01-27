@@ -5,29 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 17:02:18 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/20 13:31:49 by guisanto         ###   ########.fr       */
+/*   Created: 2025/01/22 13:37:07 by guisanto          #+#    #+#             */
+/*   Updated: 2025/01/27 15:19:25 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#  define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include <stdbool.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "libft/libft.h"
+# include <stdbool.h>
+# include "libft/libft.h"
+
+typedef struct s_node
+{
+    int             number;
+    int             index;
+    struct s_node   *next;   
+}               t_node;
+
+t_node	*create_node(int number);
+t_node *last_node(t_node *top);
+
+int     min(t_node **stack, int number);
+int		stack_is_sorted(t_node **stack);
+int		ft_stack_size(t_node *top);
+int     check_repeat(int num, char **argv, int i);
 
 
-void    count_sort(int *stack, int n, int exp);
-void    print_stack(int *stack, int n);
-void    push_swap(int *stack, int n);
-int     ft_atoi(const char *str);
-int     check_duplicates(int *stack, int n);
-int     ft_max(int *stack, int n);
-int     conta_c(const char *palavra, char letra);
-char	**ft_split(char const *s, char c);
+long long	ft_long_atoi(const char *str);
+void    free_stack(t_node **stack);
+void    ft_free(char **str);
+void    error_msg(char *str);
+
+void    check_argc(int argc, char **argv);
+void	index_stack(t_node **stack);
+void	init_stack(t_node **stack, int argc, char **argv);
+void    sort_stack(t_node **stack_a, t_node **stack_b);
+
+void	add_node_front(t_node **stack, t_node *new_node);
+void    add_node_back(t_node **stack, t_node *new_node);
+
+void	sort_three(t_node **stack_a);
+void	sort_four(t_node **stack_a, t_node **stack_b);
+void	sort_five(t_node **stack_a, t_node **stack_b);
+void	simple_sort(t_node **stack_a, t_node **stack_b);
+void	radix_sort(t_node **stack_a, t_node **stack_b);
+
+void    swap(t_node **stack_a);
+void    sa(t_node **stack_a);
+void    sb(t_node **stack_b);
+void    ss(t_node **stack_a, t_node **stack_b);
+
+void    push(t_node **stack_src, t_node **stack_dst);
+void    pa(t_node **stack_a, t_node **stack_b);
+void    pb(t_node **stack_a, t_node **stack_b);
+
+void    rotate(t_node **stack);
+void	ra(t_node **stack_a);
+void	rb(t_node **stack_b);
+void	rr(t_node **stack_a, t_node **stack_b);
+
+void    reverse_rotate(t_node **stack);
+void	rra(t_node **stack_a);
+void	rrb(t_node **stack_b);
+void    rrr(t_node **stack_a, t_node **stack_b);
 
 #endif
