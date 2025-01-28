@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:40 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/27 15:26:51 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:08:09 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void rotate(t_node **stack)
 //vai desrotacionar o 1 com o ultimo
 void reverse_rotate(t_node **stack)
 {
-    t_node *tmp;
     t_node *last;
     t_node *second_last;
 
