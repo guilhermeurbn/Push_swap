@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:30:25 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/28 13:45:08 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:54:26 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     t_node  **stack_a;
     t_node  **stack_b;
     
-    if (argc < 2)
+    if (argc == 1)
         return (0);
     check_argc(argc, argv);
     stack_a = (t_node **)malloc(sizeof(t_node *));

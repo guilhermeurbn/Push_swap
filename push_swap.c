@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:31 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/28 13:18:36 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:28:47 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 //algoritmo para organizar a Stack conforme com os bites
 void	radix_sort(t_node **stack_a, t_node **stack_b)
 {
-    int i;
-    int j;
-    int size;
-    t_node *original_a;
+	int		i;
+	int		j;
+	int		size;
 
-    i = 0;
-    size = ft_stack_size(*stack_a);
-    while(!stack_is_sorted(stack_a))
-    {
-        j = 0;
-        original_a = *stack_a;
-        while(j++ < size)
-        {
-            if ((((*stack_a)->index >> i) & 1) == 1)
-                ra(stack_a);
-            else
-                pb(stack_b, stack_a);
-        }
-        while(ft_stack_size(*stack_b) != 0)
-            pa(stack_a, stack_b);
-        *stack_a = original_a;
-        i++;
-    }
+	i = 0;
+	size = ft_stack_size(*stack_a);
+	while (!stack_is_sorted(stack_a))
+	{
+		j = 0;
+		while (j++ < size)
+		{
+			if ((((*stack_a)->index >> i) & 1) == 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b);
+		}
+		while (ft_stack_size(*stack_b) != 0)
+			pa(stack_b, stack_a);
+		i++;
+	}
 }
 //organizando conforme o tamanho da stack
 void	simple_sort(t_node **stack_a, t_node **stack_b)
