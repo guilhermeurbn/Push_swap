@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:35 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/10 15:18:00 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:19:58 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ long long	ft_long_atoi(const char *str)
 	return (result * sign);
 }
 //verificando se e um numero
-static int check_num(char *num)
+int check_num(char *num)
 {
     int i;
 
@@ -93,46 +93,4 @@ static int check_num(char *num)
         i++;
     }
     return (1);
-}
-//verificando os argumentos
-void    check_argc(int argc, char **argv)
-{
-    char    **split_args;
-
-    split_args = NULL;
-    if (argc == 2)
-    {
-        split_args = ft_split(argv[1], ' ');
-        if (!split_args || !*split_args)
-        {
-            ft_free(split_args);
-            error_msg("Error");
-        }
-        argv = split_args;
-    }
-    validade_args(argv, argc != 2, split_args);
-}
-void validade_args(char **argv, int i, char **split_argv)
-{
-    long tmp;
-
-    while(argv[i])
-    {
-        if (!(check_num(argv[i]) || !*argv[i]))
-        {
-            if (split_argv)
-                ft_free(split_argv);
-            error_msg("Error");
-        }
-        tmp =  ft_long_atoi(argv[i]);
-        if (tmp < -2147483648 || tmp > 2147483647 || check_repeat(tmp, argv, i))
-        {
-            if (split_argv)
-                ft_free(split_argv);
-            error_msg("Error");
-        }
-        i++;
-    }
-    if (split_argv)
-        ft_free(split_argv);
 }

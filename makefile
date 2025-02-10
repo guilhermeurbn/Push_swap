@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 15:43:22 by guisanto          #+#    #+#              #
-#    Updated: 2025/02/10 14:57:16 by guisanto         ###   ########.fr        #
+#    Updated: 2025/02/10 17:17:50 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,16 @@ NAME = push_swap
 CC = cc
 INCLUDES_DIR = includes
 
-SRCS = checks.c \
+SRCS = check_args.c \
+	checks.c \
 	list.c \
+	main.c \
 	operations.c \
 	p_s.c \
 	push_swap.c \
 	rotate.c \
 	small_operations.c \
-	stack.c \
-	main.c
+	stack.c
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a

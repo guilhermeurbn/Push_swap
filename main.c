@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:30:25 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/31 13:54:26 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:16:47 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ void sort_stack(t_node **stack_a, t_node **stack_b)
         simple_sort(stack_a, stack_b);
     else
         radix_sort(stack_a, stack_b);
+}
+//mensagem de error!
+void    error_msg(char *str)
+{
+    ft_putendl_fd(str, 2);
+    exit(0);
 }

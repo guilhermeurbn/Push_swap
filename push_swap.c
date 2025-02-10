@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:31 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/10 14:32:12 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:09:23 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	simple_sort(t_node **stack_a, t_node **stack_b)
     else if (size == 5)
         sort_five(stack_a, stack_b);
 }
-//pegando o 2 menor
+//pegando o 2º menor
 static t_node	*get_next_min(t_node **stack)
 {
     t_node *top;

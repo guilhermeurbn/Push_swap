@@ -6,17 +6,12 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:57 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/10 13:40:15 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:16:37 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//mensagem de error!
-void    error_msg(char *str)
-{
-    ft_putendl_fd(str, 2);
-    exit(0);
-}
+
 int	get_max_bits(t_node *stack)
 {
 	int	max;

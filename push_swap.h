@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:07 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/10 15:18:21 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:20:19 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int     get_max_index(t_node *stack);
 int		stack_is_sorted(t_node **stack);
 int		ft_stack_size(t_node *top);
 int     check_repeat(int num, char **argv, int i);
+int     check_num(char *num);
 
 
 long long	ft_long_atoi(const char *str);
@@ -43,7 +44,7 @@ void    check_argc(int argc, char **argv);
 void	index_stack(t_node **stack);
 void	init_stack(t_node **stack, int argc, char **argv);
 void    sort_stack(t_node **stack_a, t_node **stack_b);
-void validade_args(char **argv, int i, char **split_argv);
+void    validade_args(char **argv, int i, char **split_argv);
 
 void	add_node_front(t_node **stack, t_node *new_node);
 void    add_node_back(t_node **stack, t_node *new_node);

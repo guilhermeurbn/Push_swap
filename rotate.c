@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:53 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/27 15:34:20 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:15:45 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,4 @@ void	rrb(t_node **stack_b)
 {
 	reverse_rotate(stack_b);
 	ft_putendl_fd("rrb", 1);
-}
-//vai desratocionar a Stack A e B ao mesmo tempo
-void rrr(t_node **stack_a, t_node **stack_b)
-{
-    if (ft_stack_size(*stack_a) < 2 || ft_stack_size(*stack_b) < 2)
-        return ;
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
-    ft_putendl_fd("rrr", 1);
 }
