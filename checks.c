@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:35 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/31 14:05:06 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:18:00 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,9 @@ static int check_num(char *num)
 //verificando os argumentos
 void    check_argc(int argc, char **argv)
 {
-    int     i;
-    long    tmp;
     char    **split_args;
 
     split_args = NULL;
-    i = 0;
     if (argc == 2)
     {
         split_args = ft_split(argv[1], ' ');
@@ -113,26 +110,29 @@ void    check_argc(int argc, char **argv)
         }
         argv = split_args;
     }
-    else
-        i = 1;
+    validade_args(argv, argc != 2, split_args);
+}
+void validade_args(char **argv, int i, char **split_argv)
+{
+    long tmp;
 
-    while (argv[i])
+    while(argv[i])
     {
-        if (!check_num(argv[i]) || !*argv[i])  // Verifica se é número válido e não é string vazia
+        if (!(check_num(argv[i]) || !*argv[i]))
         {
-            if (split_args)
-                ft_free(split_args);
+            if (split_argv)
+                ft_free(split_argv);
             error_msg("Error");
         }
-        tmp = ft_long_atoi(argv[i]);
+        tmp =  ft_long_atoi(argv[i]);
         if (tmp < -2147483648 || tmp > 2147483647 || check_repeat(tmp, argv, i))
         {
-            if (split_args)
-                ft_free(split_args);
+            if (split_argv)
+                ft_free(split_argv);
             error_msg("Error");
         }
         i++;
     }
-    if (split_args)
-        ft_free(split_args);
+    if (split_argv)
+        ft_free(split_argv);
 }

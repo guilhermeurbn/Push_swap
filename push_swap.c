@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:31 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/03 13:28:47 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:32:12 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 //algoritmo para organizar a Stack conforme com os bites
 void	radix_sort(t_node **stack_a, t_node **stack_b)
 {
-	int		i;
-	int		j;
-	int		size;
+	int	i;
+	int	j;
+	int	size;
+	int	max_bits;
 
-	i = 0;
 	size = ft_stack_size(*stack_a);
-	while (!stack_is_sorted(stack_a))
+	max_bits = get_max_bits(*stack_a);
+	i = 0;
+	while (i < max_bits)
 	{
 		j = 0;
 		while (j++ < size)
@@ -30,7 +32,7 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 			else
 				pb(stack_a, stack_b);
 		}
-		while (ft_stack_size(*stack_b) != 0)
+		while (*stack_b)
 			pa(stack_b, stack_a);
 		i++;
 	}
@@ -39,6 +41,11 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 void	simple_sort(t_node **stack_a, t_node **stack_b)
 {
     int size;
+    if (!stack_a || !*stack_a)
+	{
+		error_msg("Error");
+		return ;
+	}
     if (stack_is_sorted(stack_a) || ft_stack_size(*stack_a) == 1 || ft_stack_size(*stack_a) == 0)
         return ;
     size = ft_stack_size(*stack_a);
@@ -47,7 +54,7 @@ void	simple_sort(t_node **stack_a, t_node **stack_b)
     else if (size == 3)
         sort_three(stack_a);
     else if (size == 4)
-        sort_four(stack_a, stack_a);
+        sort_four(stack_a, stack_b);
     else if (size == 5)
         sort_five(stack_a, stack_b);
 }

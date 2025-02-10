@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:57 by guisanto          #+#    #+#             */
-/*   Updated: 2025/01/27 15:34:43 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:40:15 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,31 @@ void    error_msg(char *str)
 {
     ft_putendl_fd(str, 2);
     exit(0);
+}
+int	get_max_bits(t_node *stack)
+{
+	int	max;
+	int	bits;
+
+	max = get_max_index(stack);
+	bits = 0;
+	while (max >> bits)
+		bits++;
+	return (bits);
+}
+// Obtém o maior índice da pilha
+int	get_max_index(t_node *stack)
+{
+	int	max;
+
+	max = stack->index;
+	while (stack)
+	{
+		if (stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
 }
 //tamanho da stack
 int		ft_stack_size(t_node *top)
