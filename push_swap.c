@@ -6,12 +6,13 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:31 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/10 17:09:23 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:36:02 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//algoritmo para organizar a Stack conforme com os bites
+
+// algoritmo para organizar a Stack conforme com os bites
 void	radix_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	i;
@@ -37,62 +38,67 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 		i++;
 	}
 }
-//organizando conforme o tamanho da stack
+
+// organizando conforme o tamanho da stack
 void	simple_sort(t_node **stack_a, t_node **stack_b)
 {
-    int size;
-    if (!stack_a || !*stack_a)
+	int	size;
+
+	if (!stack_a || !*stack_a)
 	{
 		error_msg("Error");
 		return ;
 	}
-    if (stack_is_sorted(stack_a) || ft_stack_size(*stack_a) == 1 || ft_stack_size(*stack_a) == 0)
-        return ;
-    size = ft_stack_size(*stack_a);
-    if (size == 2)
-        sa(stack_a);
-    else if (size == 3)
-        sort_three(stack_a);
-    else if (size == 4)
-        sort_four(stack_a, stack_b);
-    else if (size == 5)
-        sort_five(stack_a, stack_b);
+	if (stack_is_sorted(stack_a) || ft_stack_size(*stack_a) == 1
+		|| ft_stack_size(*stack_a) == 0)
+		return ;
+	size = ft_stack_size(*stack_a);
+	if (size == 2)
+		sa(stack_a);
+	else if (size == 3)
+		sort_three(stack_a);
+	else if (size == 4)
+		sort_four(stack_a, stack_b);
+	else if (size == 5)
+		sort_five(stack_a, stack_b);
 }
-//pegando o 2º menor
+
+// pegando o 2º menor
 static t_node	*get_next_min(t_node **stack)
 {
-    t_node *top;
-    t_node *min;
-    int tmp_min;
-    
-    min = NULL;
-    tmp_min = 0;
-    top = *stack;
-    if (top)
-    {
-        while(top)
-        {
-            if ((top -> index == -1) && (!tmp_min || top->number < min->number))
-            {
-                min = top;
-                tmp_min = 1;
-            }
-            top = top ->next;
-        }
-    }
-    return (min);
+	t_node	*top;
+	t_node	*min;
+	int		tmp_min;
+
+	min = NULL;
+	tmp_min = 0;
+	top = *stack;
+	if (top)
+	{
+		while (top)
+		{
+			if ((top->index == -1) && (!tmp_min || top->number < min->number))
+			{
+				min = top;
+				tmp_min = 1;
+			}
+			top = top->next;
+		}
+	}
+	return (min);
 }
-//organizando os index de cada numero
+
+// organizando os index de cada numero
 void	index_stack(t_node **stack)
 {
-    t_node *top;
-    int     index;
+	t_node	*top;
+	int		index;
 
-    index = 0;
-    top = get_next_min(stack);
-    while (top)
-    {
-        top -> index = index++;
-        top = get_next_min(stack);
-    }
+	index = 0;
+	top = get_next_min(stack);
+	while (top)
+	{
+		top->index = index++;
+		top = get_next_min(stack);
+	}
 }

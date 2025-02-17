@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:11:17 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/10 17:24:48 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:35:29 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	check_argc(int argc, char **argv)
 	char	**split_args;
 
 	split_args = NULL;
+	if (argc < 2)
+		error_msg("Error");
 	if (argc == 2)
 	{
 		split_args = ft_split(argv[1], ' ');
@@ -28,12 +30,13 @@ void	check_argc(int argc, char **argv)
 		}
 		argv = split_args;
 	}
-	validade_args(argv, argc != 2, split_args);
+	validade_args(argv, argc > 2, split_args);
 }
+
 // parte 2 do check de argumentos
 void	validade_args(char **argv, int i, char **split_argv)
 {
-	long tmp;
+	long	tmp;
 
 	while (argv[i])
 	{
