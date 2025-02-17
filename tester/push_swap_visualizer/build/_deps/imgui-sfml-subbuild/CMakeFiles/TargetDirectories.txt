@@ -1,3 +1,0 @@
-/Users/guilhermeurbano/Common_core/Push_swap/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate.dir
-/Users/guilhermeurbano/Common_core/Push_swap/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/edit_cache.dir
-/Users/guilhermeurbano/Common_core/Push_swap/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/rebuild_cache.dir
