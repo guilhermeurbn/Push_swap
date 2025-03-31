@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:07 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/17 14:36:06 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:05:23 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include <stdbool.h>
+#include <limits.h>
 
 typedef struct s_node
 {

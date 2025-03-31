@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:36:35 by guisanto          #+#    #+#             */
-/*   Updated: 2025/02/17 14:35:35 by guisanto         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:06:44 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ long long	ft_long_atoi(const char *str)
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
+		if (result > INT_MAX|| result < INT_MIN)
+			break;
 	}
 	return (result * sign);
 }
