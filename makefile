@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 14:35:17 by guisanto          #+#    #+#              #
-#    Updated: 2025/02/17 14:35:46 by guisanto         ###   ########.fr        #
+#    Updated: 2025/04/09 13:03:11 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ all: $(NAME)
 # Regra para criar o binário final (push_swap)
 # Aqui, o binário é criado ao compilar os arquivos objetos e a libft.a
 $(NAME): $(OBJS) $(LIBFT)
+	@echo "\033[1;34mCompilando push_swap...\033[0m"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o push_swap
+	@echo "\033[1;32mCompilado com sucesso!\033[0m"
 
 # Regra para compilar a biblioteca libft, caso ela ainda não tenha sido compilada
 # Esta regra é chamada automaticamente antes de compilar o programa principal, se necessário
@@ -63,17 +65,20 @@ $(LIBFT):
 # Regra para limpar os arquivos objetos (.o) gerados durante a compilação
 # Quando 'make clean' for executado, os arquivos .o serão removidos
 clean:
+	@echo "\033[1;33mLimpando arquivos objeto...\033[0m"
 	@rm -f $(OBJS)
 	@$(MAKE) clean -C $(LIBFT_DIR)
 
 # Regra para limpar arquivos objetos e o binário final (push_swap)
 # Quando 'make fclean' for executado, além dos objetos, o binário gerado será removido
 fclean: clean
+	@echo "\033[1;31mRemovendo binário push_swap...\033[0m"
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_DIR)
 
-re: fclean all
+re: 
+	@echo "\033[1;35mReconstruindo o projeto...\033[0m"
+	$(MAKE) fclean
+	$(MAKE) all
 
 .PHONY: all clean fclean re  #o Makefile ignora nomes coincidirem com arquivos
-
-
