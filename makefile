@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 14:35:17 by guisanto          #+#    #+#              #
-#    Updated: 2025/04/09 13:03:11 by guisanto         ###   ########.fr        #
+#    Updated: 2025/04/16 11:48:17 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_DIR)
 
-re: 
+re:
 	@echo "\033[1;35mReconstruindo o projeto...\033[0m"
 	$(MAKE) fclean
 	$(MAKE) all
